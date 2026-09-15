@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Greg Posey</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 42rem;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.6;
+      color: #1a1a1a;
+    }
+    footer {
+      margin-top: 4rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Greg Posey</h1>
+  <p>Cloud engineering portfolio. Resume and projects coming soon.</p>
+
+  <footer>
+    <p>Visitors: <span id="visitor-count">—</span></p>
+  </footer>
+
+  <script>
+    async function updateVisitorCount() {
+      const el = document.getElementById("visitor-count");
+      try {
+        const res = await fetch("/api/visitors");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        el.textContent = data.count.toLocaleString();
+      } catch (err) {
+        console.error("Visitor count failed:", err);
+        el.textContent = "unavailable";
+      }
+    }
+    updateVisitorCount();
+  </script>
+</body>
+</html>
