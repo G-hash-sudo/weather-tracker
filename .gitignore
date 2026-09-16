@@ -1,8 +1,10 @@
 .env
+*.zip
+response.json
+__pycache__/
+
+# Terraform
+.terraform/
 *.tfstate
 *.tfstate.*
 *.tfvars
-.terraform/
-__pycache__/
-*.zip
-response.json
